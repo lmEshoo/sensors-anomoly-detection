@@ -13,6 +13,7 @@ RUN apt-get update \
         python3-numpy \
         python3-sklearn \
         python3-pandas \
+        python3-rpi.gpio \
         libopenblas-dev
 
 RUN  apt-get clean \
