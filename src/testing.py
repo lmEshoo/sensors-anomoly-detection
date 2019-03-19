@@ -98,9 +98,20 @@ py.plot(data, filename='blah.html')
 
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
+def p(clf, test_x):
+    pred = clf.predict([[test_x]])
+    if(pred[0] == 0):
+        pred = "close"
+    elif(pred[0] == 1):
+        pred = "not close"
+    else:
+        pred = "far"
+    conf = clf.decision_function([[test_x]])
+    print("test:",test_x,"\npredict:", pred,"\nconfidence out of 3 classes:", conf)
 
 clf = SVC(kernel='linear')
 clf.fit(X.reshape(X.shape[0], -1), Y.reshape(Y.shape[0]))
-pred = clf.predict([[4005]])
-conf = clf.decision_function([[4005]])
-print(pred, conf)
+p(clf,4005)
+p(clf,45)
+p(clf,5)
+
