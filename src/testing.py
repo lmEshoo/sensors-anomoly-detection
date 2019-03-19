@@ -84,7 +84,7 @@ for i in range(len(X)):
     # print(X[i],nd2[i])
     Y = np.append(Y,nd[i])
 
-print(len(X),len(Y))
+# print(len(X),len(Y))
 # print(X[0],Y[0],nd2[0])
 #Plots
 trace = go.Scatter(
@@ -92,25 +92,15 @@ trace = go.Scatter(
     y = nd2,
     mode = 'markers'
 )
-
+# print(Y.reshape(Y.shape[0], -1),X.shape[0])
 data = [trace]
 py.plot(data, filename='blah.html')
 
-from sklearn.model_selection import train_test_split  
-from sklearn import preprocessing
- 
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
 
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=0)  
-from sklearn.linear_model import LinearRegression  
-
-lr = LinearRegression()  
-print(len(X_train),len(X_test),len(y_train),len(y_test))
-X_train = X_train.reshape(1,-1) 
-y_train = y_train.reshape(1,-1)
-X_test = X_test.reshape(1,-1) 
-y_test = y_test.reshape(1,-1)
-# print(X_train[0], X_test[0], y_train[0], y_test[0])
-lr.fit(X_train, y_train)  
-y_pred = lr.predict(X_test)  
-print(len(y_pred))
-print(y_pred)
+clf = SVC(kernel='linear')
+clf.fit(X.reshape(X.shape[0], -1), Y.reshape(Y.shape[0]))
+pred = clf.predict([[4005]])
+conf = clf.decision_function([[4005]])
+print(pred, conf)
