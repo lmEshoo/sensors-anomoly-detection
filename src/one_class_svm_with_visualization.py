@@ -5,7 +5,6 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-import ggplot
 
 # choose file to use
 filename = "formatted online sensor data.csv"
@@ -51,7 +50,6 @@ feat_cols = ['pixel'+str(i) for i in range(X_test.shape[1])]
 
 df = pd.DataFrame(X_test,columns=feat_cols)
 df['label'] = y_pred_test
-df['label'] = df['label'].apply(lambda i: str(i))
 
 pca = PCA(n_components=3)
 pca_result = pca.fit_transform(df[feat_cols].values)
@@ -62,11 +60,12 @@ df['pca-three'] = pca_result[:,2]
 
 print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
 
-chart = ggplot.ggplot(df, ggplot.aes(x='pca-one', y='pca-two', color='label') ) + ggplot.geom_point(size=75,alpha=0.8) + ggplot.ggtitle("First and Second Principal Components colored by digit")
-chart.show()
+# 2D
+twodee = plt.scatter(df['pca-one'], df['pca-two'], c=df['label'])
 
+# 3D
 threedee = plt.figure().gca(projection='3d')
-threedee.scatter(df['pca-one'], df['pca-two'], df['pca-three'], c=y_pred_test[:])
+threedee.scatter(df['pca-one'], df['pca-two'], df['pca-three'], c=df['label'])
 threedee.set_xlabel('pca-one')
 threedee.set_ylabel('pca-two')
 threedee.set_zlabel('pca-three')
