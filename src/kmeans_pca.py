@@ -59,7 +59,7 @@ list(map(lambda data1, data2, data3, str_label:
         ax.text(data1, data2, data3, s = str_label, size = 16.5, 
         zorder = 20, color = 'k'), pca_data[0], pca_data[1], 
         pca_data[2], str_labels)) 
-plt.savefig(str(datetime.now())+'.png')
+plt.savefig('../outputs/kmeans_pca_1.png')
 
 from matplotlib import cm 
   
@@ -93,4 +93,4 @@ ax = Axes3D(fig)
 # plotting 3D trisurface plot 
 ax.plot_trisurf(plot_df[0], plot_df[1], plot_df[2],  
                     cmap = cm.jet, linewidth = 0.2)
-plt.savefig(str(datetime.now())+'.png')
+plt.savefig('../outputs/kmeans_pca_2.png')

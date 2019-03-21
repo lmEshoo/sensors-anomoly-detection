@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn import svm
+from datetime import datetime
 
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -7,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
 # choose file to use
-filename = "formatted online sensor data.csv"
+filename = "../data/formatted_online_sensor_data.csv"
 # filename = "formatted rdu-weather-history.csv"
 # filename = "formatted training_data.csv"
 # filename = "formatted training_data_new.csv"
@@ -62,11 +63,12 @@ print('Explained variation per principal component: {}'.format(pca.explained_var
 
 # 2D
 twodee = plt.scatter(df['pca-one'], df['pca-two'], c=df['label'])
-
+plt.savefig('../outputs/one_class_svm_with_visualization_2d.png')
 # 3D
 threedee = plt.figure().gca(projection='3d')
 threedee.scatter(df['pca-one'], df['pca-two'], df['pca-three'], c=df['label'])
 threedee.set_xlabel('pca-one')
 threedee.set_ylabel('pca-two')
 threedee.set_zlabel('pca-three')
-plt.show()
+# plt.show()
+plt.savefig('../outputs/one_class_svm_with_visualization_3d.png')

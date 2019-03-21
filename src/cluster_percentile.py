@@ -26,7 +26,7 @@ trace = go.Scatter(
 )
 # print(Y.reshape(Y.shape[0], -1),X.shape[0])
 data = [trace]
-py.plot(data, filename='blah.html')
+py.plot(data, filename='../outputs/cluster_percentile.html')
 
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
