@@ -1,7 +1,10 @@
 # sensors-anomoly-detection
 
 ## Prerequisites
-- [Docker install](https://medium.freecodecamp.org/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef)
+
+- [Docker for Mac install](https://docs.docker.com/v17.12/docker-for-mac/install/)
+- [Docker for Windows install](https://docs.docker.com/docker-for-windows/install/)
+- [Docker for Rpi install](https://medium.freecodecamp.org/the-easy-way-to-set-up-docker-on-a-raspberry-pi-7d24ced073ef)
 
 
 ## Usage
@@ -22,3 +25,10 @@ make
 ## Output
 
 All graphs will be located in `./outputs` folder
+
+
+## Contributors
+
+- Lini Mestar
+- Tyler Oeth
+- Haikuan Qiu
